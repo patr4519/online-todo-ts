@@ -1,7 +1,18 @@
-header {
-    border: 1px solid black;
-    height: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.header div {
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header div:last-child {
+  margin-right: 0;
 }
