@@ -1,6 +1,8 @@
+import TodoApp from "../components/TodoApp";
+
 const Home = () => {
     return (
-        <div>Home</div>
+        <div><TodoApp /></div>
     )
 }
 
