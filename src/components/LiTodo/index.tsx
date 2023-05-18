@@ -1,6 +1,8 @@
 import { useAppDispatch } from "../../app/hooks";
 import { changeComplete, removeItem } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
+import styles from "./LiTodo.module.scss";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const LiTodo = (props: ItemTodo) => {
   const dispath = useAppDispatch();
@@ -9,12 +11,16 @@ const LiTodo = (props: ItemTodo) => {
     <li>
       <input
         onClick={() => dispath(changeComplete(props.id))}
-        checked={props.completed}
+        defaultChecked={props.completed}
         type="checkbox"
       />
       <label>{props.text}</label>
       <button onClick={() => alert(props.description)}>Description</button>
-      <button onClick={() => dispath(removeItem(props.id))}>Remove</button>
+      <DeleteIcon
+        className={styles.deleteIcon}
+        onClick={() => dispath(removeItem(props.id))}
+        sx={{ color: "#e32315" }}
+      />
     </li>
   );
 };
