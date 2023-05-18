@@ -13,6 +13,7 @@ const LiTodo = (props: ItemTodo) => {
         type="checkbox"
       />
       <label>{props.text}</label>
+      <button onClick={() => alert(props.description)}>Description</button>
       <button onClick={() => dispath(removeItem(props.id))}>Remove</button>
     </li>
   );

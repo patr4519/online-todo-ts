@@ -20,12 +20,13 @@ const TodoApp = () => {
 
   const add = () => {
     if (inputValue) {
-      dispatch(addItem({inputValue, description}));
+      dispatch(addItem({ inputValue, description }));
     }
     if (inputRef.current) {
       inputRef.current.focus();
     }
     setInputValue("");
+    setDescription("");
   };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
@@ -39,6 +40,7 @@ const TodoApp = () => {
       <div className={styles.todo_app}>
         <h1>Todos</h1>
         <div className={styles.input_section}>
+          Title:
           <input
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -48,14 +50,17 @@ const TodoApp = () => {
             ref={inputRef}
           />
           {inputValue.length > 0 && (
-            <input
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+            <>
+              Description:
+              <input
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </>
           )}
-          <button onClick={add}>Add</button>
-          <button onClick={() => dispatch(clearItems())}>Clear All</button>
         </div>
+        <button onClick={add}>Add</button>
+        <button onClick={() => dispatch(clearItems())}>Clear All</button>
         <ul className={styles.todo_list}>
           {visible === "completed"
             ? items
