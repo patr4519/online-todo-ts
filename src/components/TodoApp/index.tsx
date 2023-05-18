@@ -50,15 +50,15 @@ const TodoApp = () => {
           <button onClick={() => dispatch(clearItems())}>Clear All</button>
         </div>
         <ul className={styles.todo_list}>
-          {visible === "all"
-            ? items.map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)
+          {visible === "completed"
+            ? items
+                .filter((todo) => todo.completed === true)
+                .map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)
             : visible === "active"
             ? items
                 .filter((todo) => todo.completed === false)
                 .map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)
-            : items
-                .filter((todo) => todo.completed === true)
-                .map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)}
+            : items.map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)}
         </ul>
         <div className={styles.footer}>
           <span>
