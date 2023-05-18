@@ -12,6 +12,7 @@ import LiTodo from "../LiTodo";
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
   const [visible, setVisible] = React.useState("all");
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectTodos);
@@ -19,6 +20,15 @@ const TodoApp = () => {
   const add = () => {
     dispatch(addItem(inputValue));
     setInputValue("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === "Enter") {
+      add();
+    }
   };
 
   return (
@@ -28,9 +38,11 @@ const TodoApp = () => {
         <div className={styles.input_section}>
           <input
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
             value={inputValue}
             placeholder="Todo 1"
             type="text"
+            ref={inputRef}
           />
           <button onClick={add}>Add</button>
           <button onClick={() => dispatch(clearItems())}>Clear All</button>
