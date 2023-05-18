@@ -1,6 +1,6 @@
 .todo_app_wrapper {
-  height: 800px;
-  position: relative;
+  // height: 800px;
+  // position: relative;
 
   .todo_app {
     width: 400px;
@@ -11,7 +11,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 8px 6px 10px #756363;
+    box-shadow: 8px 6px 10px #515151;
 
     h1 {
       margin-bottom: 20px;
