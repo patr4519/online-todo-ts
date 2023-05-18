@@ -11,6 +11,7 @@ import LiTodo from "../LiTodo";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
+  const [description, setDescription] = React.useState("");
   const [visible, setVisible] = React.useState("all");
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -19,7 +20,7 @@ const TodoApp = () => {
 
   const add = () => {
     if (inputValue) {
-      dispatch(addItem(inputValue));
+      dispatch(addItem({inputValue, description}));
     }
     if (inputRef.current) {
       inputRef.current.focus();
@@ -46,6 +47,12 @@ const TodoApp = () => {
             type="text"
             ref={inputRef}
           />
+          {inputValue.length > 0 && (
+            <input
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          )}
           <button onClick={add}>Add</button>
           <button onClick={() => dispatch(clearItems())}>Clear All</button>
         </div>
