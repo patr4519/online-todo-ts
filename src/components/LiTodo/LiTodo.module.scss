@@ -1,5 +1,25 @@
+input {
+  height: 35px;
+}
+
 .deleteIcon {
   &:hover {
     cursor: pointer;
   }
+}
+
+.leftBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label {
+    margin-left: 10px;
+  }
+}
+
+.rightBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
