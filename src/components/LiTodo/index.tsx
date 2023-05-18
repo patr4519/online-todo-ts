@@ -1,6 +1,7 @@
 import { useAppDispatch } from "../../app/hooks";
 import { changeComplete, removeItem } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
+
 interface LiTodoProps {
   item: ItemTodo;
 }

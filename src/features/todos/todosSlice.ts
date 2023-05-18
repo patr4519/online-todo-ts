@@ -3,8 +3,8 @@ import { RootState } from "../../app/store";
 import { ItemTodo } from "../../types/data";
 
 const initialState: ItemTodo[] = [
-  { id: 1, text: "Shop", completed: false, description: "go to shop" },
-  { id: 2, text: "Work", completed: false, description: "go to work" },
+  // { id: 1, text: "Shop", completed: false, description: "go to shop" },
+  // { id: 2, text: "Work", completed: false, description: "go to work" },
 ];
 
 export const todosSlice = createSlice({

@@ -11,6 +11,7 @@ import LiTodo from "../LiTodo";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
+  const [visible, setVisible] = React.useState("all");
 
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectTodos);
@@ -37,18 +38,24 @@ const TodoApp = () => {
           <button onClick={() => dispatch(clearItems())}>Clear All</button>
         </div>
         <ul className={styles.todo_list}>
-          {items.map((todo: ItemTodo) => (
-            <LiTodo key={todo.id} {...todo} />
-          ))}
+          {visible === "all"
+            ? items.map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)
+            : visible === "active"
+            ? items
+                .filter((todo) => todo.completed === false)
+                .map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)
+            : items
+                .filter((todo) => todo.completed === true)
+                .map((todo: ItemTodo) => <LiTodo key={todo.id} {...todo} />)}
         </ul>
         <div className={styles.footer}>
           <span>
             Total count: <span className={styles.count}>{items.length}</span>
           </span>
           <div className={styles.filter_buttons}>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={() => setVisible("all")}>All</button>
+            <button onClick={() => setVisible("active")}>Active</button>
+            <button onClick={() => setVisible("completed")}>Completed</button>
           </div>
         </div>
       </div>
