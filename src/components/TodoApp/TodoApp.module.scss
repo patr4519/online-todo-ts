@@ -1,7 +1,6 @@
 .todo_app_wrapper {
   height: 800px;
   position: relative;
-  background: linear-gradient(180deg, #a89999 50%, #1b5a66 100%);
 
   .todo_app {
     width: 400px;
@@ -17,7 +16,7 @@
     h1 {
       margin-bottom: 20px;
       text-align: center;
-      color: #ff1616eb;;
+      color: #ff1616eb;
     }
 
     .input_section {
@@ -32,7 +31,7 @@
         border: none;
 
         &:focus {
-          outline: thick double #5982d0;;
+          outline: thick double #5982d0;
         }
       }
     }
