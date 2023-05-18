@@ -1,7 +1,11 @@
 import styles from "./TodoApp.module.scss";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { addItem, clearItems, selectTodos } from "../../features/todos/todosSlice";
+import {
+  addItem,
+  clearItems,
+  selectTodos,
+} from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
 
@@ -25,7 +29,7 @@ const TodoApp = () => {
           <button
             onClick={() => {
               dispatch(addItem(inputValue));
-              setInputValue('')
+              setInputValue("");
             }}
           >
             Add
@@ -34,7 +38,7 @@ const TodoApp = () => {
         </div>
         <ul className={styles.todo_list}>
           {items.map((todo: ItemTodo) => (
-            <LiTodo key={todo.id} {...todo}/>
+            <LiTodo key={todo.id} {...todo} />
           ))}
         </ul>
         <div className={styles.footer}>
