@@ -3,6 +3,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { addItem, clearItems, selectTodos } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
+import LiTodo from "../LiTodo";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -33,9 +34,7 @@ const TodoApp = () => {
         </div>
         <ul className={styles.todo_list}>
           {items.map((todo: ItemTodo) => (
-            <li key={todo.id}>
-              {todo.text} (description): {todo.description}
-            </li>
+            <LiTodo key={todo.id} {...todo}/>
           ))}
         </ul>
         <div className={styles.footer}>

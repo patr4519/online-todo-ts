@@ -17,11 +17,15 @@ export const todosSlice = createSlice({
     },
     clearItems() {
       return initialState;
+    },
+    removeItem(state, action) {
+      const {payload} = action;
+      console.log(payload)
     }
   },
 });
 
-export const { addItem, clearItems } = todosSlice.actions;
+export const { addItem, clearItems, removeItem } = todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 
