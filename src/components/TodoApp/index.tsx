@@ -18,11 +18,13 @@ const TodoApp = () => {
   const items = useAppSelector(selectTodos);
 
   const add = () => {
-    dispatch(addItem(inputValue));
-    setInputValue("");
+    if (inputValue) {
+      dispatch(addItem(inputValue));
+    }
     if (inputRef.current) {
       inputRef.current.focus();
     }
+    setInputValue("");
   };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
