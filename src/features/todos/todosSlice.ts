@@ -20,12 +20,18 @@ export const todosSlice = createSlice({
     },
     removeItem(state, action) {
       const {payload} = action;
-      console.log(payload)
+      return state.filter(item => item.id !== payload)
+    },
+    changeComplete(state, action) {
+      const id = action.payload;
+      return state.map((todo) => 
+        todo.id === id ? {...todo, completed: !todo.completed} : todo
+      )
     }
   },
 });
 
-export const { addItem, clearItems, removeItem } = todosSlice.actions;
+export const { addItem, clearItems, removeItem, changeComplete } = todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 

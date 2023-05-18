@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../app/hooks";
-import { removeItem } from "../../features/todos/todosSlice";
+import { changeComplete, removeItem } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 
 interface LiTodoProps {
@@ -9,10 +9,9 @@ interface LiTodoProps {
 const LiTodo = (props: ItemTodo) => {
   const dispath = useAppDispatch();
 
-
   return (
     <li>
-      <input type="checkbox" readOnly />
+      <input type="checkbox" onClick={() => dispath(changeComplete(props.id))} readOnly />
       <label>{props.text}</label>
       <button onClick={() => dispath(removeItem(props.id))}>Remove</button>
     </li>

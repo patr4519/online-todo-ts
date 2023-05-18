@@ -39,7 +39,7 @@ const TodoApp = () => {
         </ul>
         <div className={styles.footer}>
           <span>
-            Total count: <span className={styles.count}>0</span>
+            Total count: <span className={styles.count}>{items.length}</span>
           </span>
           <div className={styles.filter_buttons}>
             <button>All</button>
