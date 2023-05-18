@@ -1,19 +1,23 @@
 .todo_app_wrapper {
-  border: 1px solid black;
   height: 800px;
   position: relative;
+  background: linear-gradient(180deg, #a89999 50%, #1b5a66 100%);
 
   .todo_app {
     width: 400px;
-    border: 1px solid black;
+    background: linear-gradient(180deg, #202020 0%, #809a9f 100%);
+    padding: 10px;
+    border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    box-shadow: 8px 6px 10px #756363;
 
     h1 {
       margin-bottom: 20px;
       text-align: center;
+      color: #ff1616eb;;
     }
 
     .input_section {
@@ -23,7 +27,13 @@
 
       input {
         padding: 5px;
-        margin: 5px;
+        margin-bottom: 8px;
+        border-radius: 3px;
+        border: none;
+
+        &:focus {
+          outline: thick double #5982d0;;
+        }
       }
     }
 

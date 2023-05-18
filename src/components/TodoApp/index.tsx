@@ -46,7 +46,6 @@ const TodoApp = () => {
       <div className={styles.todo_app}>
         <h1>Todos</h1>
         <div className={styles.input_section}>
-          Title:
           <input
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -57,10 +56,10 @@ const TodoApp = () => {
           />
           {inputValue.length > 0 && (
             <>
-              Description:
               <input
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                placeholder="Description"
               />
             </>
           )}
