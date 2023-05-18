@@ -1,12 +1,14 @@
 import styles from "./TodoApp.module.scss";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { addItem } from "../../features/todos/todosSlice";
+import { addItem, selectTodos } from "../../features/todos/todosSlice";
+import { ItemTodo } from "../../types/data";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
 
   const dispatch = useAppDispatch();
+  const items = useAppSelector(selectTodos);
 
   return (
     <div className={styles.todo_app_wrapper}>
@@ -18,10 +20,22 @@ const TodoApp = () => {
             type="text"
             placeholder="Todo 1"
           />
-          <button onClick={() => dispatch(addItem(1))}>Add</button>
+          <button
+            onClick={() => {
+              dispatch(addItem(inputValue));
+            }}
+          >
+            Add
+          </button>
           <button>Clear All</button>
         </div>
-        <ul className={styles.todo_list}>Rendered todos</ul>
+        <ul className={styles.todo_list}>
+          {items.map((todo: ItemTodo) => (
+            <li key={todo.id}>
+              {todo.text} (description): {todo.description}
+            </li>
+          ))}
+        </ul>
         <div className={styles.footer}>
           <span>
             Total count: <span className={styles.count}>0</span>
