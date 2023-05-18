@@ -16,6 +16,11 @@ const TodoApp = () => {
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectTodos);
 
+  const add = () => {
+    dispatch(addItem(inputValue));
+    setInputValue("");
+  };
+
   return (
     <div className={styles.todo_app_wrapper}>
       <div className={styles.todo_app}>
@@ -23,18 +28,11 @@ const TodoApp = () => {
         <div className={styles.input_section}>
           <input
             onChange={(e) => setInputValue(e.target.value)}
-            type="text"
-            placeholder="Todo 1"
             value={inputValue}
+            placeholder="Todo 1"
+            type="text"
           />
-          <button
-            onClick={() => {
-              dispatch(addItem(inputValue));
-              setInputValue("");
-            }}
-          >
-            Add
-          </button>
+          <button onClick={add}>Add</button>
           <button onClick={() => dispatch(clearItems())}>Clear All</button>
         </div>
         <ul className={styles.todo_list}>

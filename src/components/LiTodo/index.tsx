@@ -15,6 +15,7 @@ const LiTodo = (props: ItemTodo) => {
         type="checkbox"
         onClick={() => dispath(changeComplete(props.id))}
         readOnly
+        checked={props.completed}
       />
       <label>{props.text}</label>
       <button onClick={() => dispath(removeItem(props.id))}>Remove</button>
