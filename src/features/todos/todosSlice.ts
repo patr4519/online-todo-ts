@@ -15,10 +15,13 @@ export const todosSlice = createSlice({
       const { payload } = action;
       state.push({id: Date.now(), text: payload, completed: false, description: ''})
     },
+    clearItems() {
+      return initialState;
+    }
   },
 });
 
-export const { addItem } = todosSlice.actions;
+export const { addItem, clearItems } = todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 
