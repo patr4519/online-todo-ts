@@ -29,6 +29,12 @@ const TodoApp = () => {
     setDescription("");
   };
 
+  const clearAll = () => {
+    dispatch(clearItems())
+    setInputValue("");
+    setDescription("");
+  }
+
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === "Enter") {
       add();
@@ -60,7 +66,7 @@ const TodoApp = () => {
           )}
         </div>
         <button onClick={add}>Add</button>
-        <button onClick={() => dispatch(clearItems())}>Clear All</button>
+        <button onClick={clearAll}>Clear All</button>
         <ul className={styles.todo_list}>
           {visible === "completed"
             ? items
