@@ -8,6 +8,7 @@ import {
 } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
+import { Button } from "@mui/material";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -30,10 +31,10 @@ const TodoApp = () => {
   };
 
   const clearAll = () => {
-    dispatch(clearItems())
+    dispatch(clearItems());
     setInputValue("");
     setDescription("");
-  }
+  };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === "Enter") {
@@ -64,8 +65,17 @@ const TodoApp = () => {
             </>
           )}
         </div>
-        <button onClick={add}>Add</button>
-        <button onClick={clearAll}>Clear All</button>
+        <Button onClick={add} size="small" variant="contained" color="success">
+          Add
+        </Button>
+        <Button
+          onClick={clearAll}
+          size="small"
+          variant="contained"
+          color="error"
+        >
+          Clear All
+        </Button>
         <ul className={styles.todo_list}>
           {visible === "completed"
             ? items
