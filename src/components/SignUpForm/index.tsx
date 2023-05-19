@@ -1,7 +1,8 @@
-import React from 'react'
-import styles from './SignUpFrom.module.scss'
+import React from "react";
+import styles from "./SignUpFrom.module.scss";
 import Button from "@mui/material/Button";
-import { SingUpProps } from '../../types/data';
+import { SingUpProps } from "../../types/data";
+import { submitSignUp } from '../../functions/submitSignUp';
 
 const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
   const [login, setLogin] = React.useState("");
@@ -10,7 +11,7 @@ const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
   return (
     <div className={styles["form-container"]}>
       <h2>Sign Up</h2>
-      <form>
+      <form onSubmit={(e) => submitSignUp(e)}>
         <input
           value={login}
           onChange={(e) => setLogin(e.target.value)}
@@ -26,8 +27,8 @@ const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
           placeholder="Password"
           required
         />
-        <Button sx={{ margin: "3px 0px" }} variant="contained">
-          Login
+        <Button type="submit" sx={{ margin: "3px 0px" }} variant="contained">
+          Create
         </Button>
         <Button
           onClick={() => setSignUpShow(false)}
