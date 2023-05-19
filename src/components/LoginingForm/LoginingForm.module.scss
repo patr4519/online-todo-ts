@@ -1,5 +1,6 @@
 .form-container {
-  margin-top: 200px;
+  position: absolute;
+  top: 5px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -7,17 +8,18 @@
   height: 230px;
   background-color: #4a4c4f;
   border-radius: 10px;
+  z-index: 999;
 
   form {
     display: flex;
     flex-direction: column;
 
     input {
-        border-radius: 5px;
-        border: none;
-        outline: none;
-        padding: 5px;
-        margin: 3px 0;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      padding: 5px;
+      margin: 3px 0;
     }
   }
 }

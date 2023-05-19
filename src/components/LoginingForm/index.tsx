@@ -28,7 +28,14 @@ const LoginingForm = () => {
         <Button sx={{ margin: "3px 0px" }} variant="contained">
           Login
         </Button>
-        <Button sx={{ margin: "3px 0px" }} variant="contained">
+        <Button
+          sx={{
+            margin: "3px 0px",
+            background: "#dd0a0a",
+            "&:hover": { background: "#f24444" },
+          }}
+          variant="contained"
+        >
           Close
         </Button>
       </form>
