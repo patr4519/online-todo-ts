@@ -72,6 +72,20 @@
       .filter_buttons {
         button {
           margin-right: 5px;
+          padding: 2px 5px;
+          background-color: #9db1d7;
+          border: none;
+          border-radius: 3px;
+
+          &:hover {
+            background-color: #7887a3;
+            cursor: pointer;
+          }
+
+          &.active {
+            background-color: #2b2d31;
+            color: white;
+          }
         }
       }
     }

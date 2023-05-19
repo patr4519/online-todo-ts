@@ -92,9 +92,24 @@ const TodoApp = () => {
             Total count: <span className={styles.count}>{items.length}</span>
           </span>
           <div className={styles.filter_buttons}>
-            <button onClick={() => setVisible("all")}>All</button>
-            <button onClick={() => setVisible("active")}>Active</button>
-            <button onClick={() => setVisible("completed")}>Completed</button>
+            <button
+              className={visible === "all" ? `${styles.active}` : ""}
+              onClick={() => setVisible("all")}
+            >
+              All
+            </button>
+            <button
+              className={visible === "active" ? `${styles.active}` : ""}
+              onClick={() => setVisible("active")}
+            >
+              Active
+            </button>
+            <button
+              className={visible === "completed" ? `${styles.active}` : ""}
+              onClick={() => setVisible("completed")}
+            >
+              Completed
+            </button>
           </div>
         </div>
       </div>
