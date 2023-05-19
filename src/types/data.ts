@@ -8,3 +8,7 @@ export interface ItemTodo {
 export type LoginingFormProps = {
   setSignInShow: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export type SingUpProps = {
+  setSignUpShow: React.Dispatch<React.SetStateAction<boolean>>;
+};
