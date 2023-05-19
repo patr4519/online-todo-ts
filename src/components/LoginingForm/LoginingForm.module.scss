@@ -1,0 +1,23 @@
+.form-container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 300px;
+  height: 230px;
+  background-color: #4a4c4f;
+  border-radius: 10px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 5px;
+        margin: 3px 0;
+    }
+  }
+}
