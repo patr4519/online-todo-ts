@@ -1,0 +1,13 @@
+.profile_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin: 0 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
