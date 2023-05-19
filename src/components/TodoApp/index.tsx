@@ -17,7 +17,19 @@ const TodoApp = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
-  const items = useAppSelector(selectTodos);
+  let items = useAppSelector(selectTodos);
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("reduxState");
+
+    let todos;
+
+    if (data) {
+      todos = JSON.parse(data).todos;
+    }
+
+    console.log(todos);
+  }, []);
 
   const add = () => {
     if (inputValue) {
