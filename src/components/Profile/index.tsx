@@ -6,12 +6,13 @@ import LoginingForm from "../LoginingForm";
 
 const Profile = () => {
   const [showButtons, setShowButtons] = React.useState(false);
+  const [signInShow, setSignInShow] = React.useState(false);
 
   return (
     <nav className={styles.profile_block}>
-      <LoginingForm />
+      {signInShow && <LoginingForm />}
       {showButtons && (
-        <Button sx={{width: '80px'}} variant="contained" size="small">
+        <Button onClick={() => setSignInShow(prev => !prev)} sx={{ width: "80px" }} variant="contained" size="small">
           Sign In
         </Button>
       )}
@@ -23,7 +24,7 @@ const Profile = () => {
         alt="profile"
       />
       {showButtons && (
-        <Button sx={{width: '80px'}} variant="contained" size="small">
+        <Button sx={{ width: "80px" }} variant="contained" size="small">
           Sign Up
         </Button>
       )}

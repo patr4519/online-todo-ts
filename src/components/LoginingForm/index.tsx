@@ -29,7 +29,7 @@ const LoginingForm = () => {
           Login
         </Button>
         <Button sx={{ margin: "3px 0px" }} variant="contained">
-          Submit
+          Close
         </Button>
       </form>
     </div>
