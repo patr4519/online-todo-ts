@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./LoginingForm.module.scss";
 import Button from "@mui/material/Button";
 
-const LoginingForm = () => {
+const LoginingForm = (props: any) => {
+  const { setSignInShow } = props;
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -29,6 +30,7 @@ const LoginingForm = () => {
           Login
         </Button>
         <Button
+          onClick={() => setSignInShow(false)}
           sx={{
             margin: "3px 0px",
             background: "#dd0a0a",

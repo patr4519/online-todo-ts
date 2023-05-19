@@ -10,7 +10,7 @@ const Profile = () => {
 
   return (
     <nav className={styles.profile_block}>
-      {signInShow && <LoginingForm />}
+      {signInShow && <LoginingForm setSignInShow={setSignInShow}/>}
       {showButtons && (
         <Button onClick={() => setSignInShow(prev => !prev)} sx={{ width: "80px" }} variant="contained" size="small">
           Sign In
