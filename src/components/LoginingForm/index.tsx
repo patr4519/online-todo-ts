@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./LoginingForm.module.scss";
 import Button from "@mui/material/Button";
+import { LoginingFormProps } from "../../types/data";
 
-const LoginingForm = (props: any) => {
-  const { setSignInShow } = props;
+const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
 
