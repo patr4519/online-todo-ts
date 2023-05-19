@@ -5,6 +5,7 @@ import {
   addItem,
   clearItems,
   selectTodos,
+  setFromLocalS,
 } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
@@ -26,12 +27,11 @@ const TodoApp = () => {
 
     if (data) {
       todos = JSON.parse(data).todos;
+      dispatch(setFromLocalS(todos));
     }
-
-    console.log(todos);
   }, []);
 
-  const add = () => {
+  const add = (): void => {
     if (inputValue) {
       dispatch(addItem({ inputValue, description }));
     }
@@ -42,7 +42,7 @@ const TodoApp = () => {
     setDescription("");
   };
 
-  const clearAll = () => {
+  const clearAll = (): void => {
     dispatch(clearItems());
     setInputValue("");
     setDescription("");

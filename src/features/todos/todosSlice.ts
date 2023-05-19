@@ -2,10 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ItemTodo } from "../../types/data";
 
-const initialState: ItemTodo[] = [
-  // { id: 1, text: "Shop", completed: false, description: "go to shop" },
-  // { id: 2, text: "Work", completed: false, description: "go to work" },
-];
+const initialState: ItemTodo[] = [];
 
 export const todosSlice = createSlice({
   name: "todos",
@@ -32,10 +29,13 @@ export const todosSlice = createSlice({
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       );
     },
+    setFromLocalS(state, action) {
+      state.push(...action.payload);
+    }
   },
 });
 
-export const { addItem, clearItems, removeItem, changeComplete } =
+export const { addItem, clearItems, removeItem, changeComplete, setFromLocalS } =
   todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
