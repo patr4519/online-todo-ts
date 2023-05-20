@@ -2,11 +2,34 @@ import React from "react";
 import styles from "./SignUpFrom.module.scss";
 import Button from "@mui/material/Button";
 import { SingUpProps } from "../../types/data";
-import { submitSignUp } from '../../functions/submitSignUp';
+import axios, { AxiosResponse } from "axios";
+import { UserType } from "../../types/data";
 
 const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const submitSignUp: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    try {
+      const { data }: AxiosResponse<UserType[]> = await axios.get(
+        "https://63fef788571200b7b7d2e115.mockapi.io/Todos"
+      );
+      if (!data.some((user) => user.login === login)) {
+        await axios.post("https://63fef788571200b7b7d2e115.mockapi.io/Todos", {
+          login: login.toLowerCase(),
+          password: password,
+          created: Date.now(),
+        });
+        alert("User created!");
+        setSignUpShow(false);
+      } else {
+        alert("Such user already exist!");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <div className={styles["form-container"]}>

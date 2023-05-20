@@ -12,3 +12,10 @@ export type LoginingFormProps = {
 export type SingUpProps = {
   setSignUpShow: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+export type UserType = {
+  id: string;
+  login: string;
+  password: string;
+  todos?: ItemTodo[];
+}
