@@ -9,7 +9,8 @@ const curUserSlice = createSlice({
     initialState,
     reducers: {
         addCurUser: (state, action) => {
-
+            const user: UserType = action.payload;
+            state.push(user)
         }
     }
 })
