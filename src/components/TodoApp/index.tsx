@@ -10,6 +10,7 @@ import {
 import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
 import { Button } from "@mui/material";
+import { setUserFromLocalS } from "../../features/todos/curUserSlice";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -24,10 +25,14 @@ const TodoApp = () => {
     const data = localStorage.getItem("reduxState");
 
     let todos;
+    let user;
 
     if (data) {
       todos = JSON.parse(data).todos;
+      user = JSON.parse(data).curUser;
+
       dispatch(setFromLocalS(todos));
+      dispatch(setUserFromLocalS(user));
     }
   }, []);
 
