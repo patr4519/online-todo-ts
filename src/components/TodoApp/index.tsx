@@ -29,9 +29,12 @@ const TodoApp = () => {
 
     if (data) {
       todos = JSON.parse(data).todos;
-      user = JSON.parse(data).curUser;
       dispatch(setFromLocalS(todos));
-      dispatch(setUserFromLocalS(user));
+
+      user = JSON.parse(data).curUser[0];
+      if (user) {
+        dispatch(setUserFromLocalS(user));
+      }
     }
   }, []);
 
