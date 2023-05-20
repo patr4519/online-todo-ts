@@ -18,7 +18,7 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
       const { data }: AxiosResponse<UserType[] | []> = await axios.get(
         "https://63fef788571200b7b7d2e115.mockapi.io/Todos"
       );
-      let user: null | UserType;
+      let user: null | UserType = null;
 
       for (let i = 0; i < data.length; i++) {
         if (
@@ -29,8 +29,14 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
           if (user) {
             dispatch(addCurUser(user));
           }
+          setSignInShow(false);
           break;
         }
+      }
+      if (!user) {
+        alert("Not such user or wrong password!");
+        setLogin('');
+        setPassword('');
       }
     } catch (error) {
       alert(error);
