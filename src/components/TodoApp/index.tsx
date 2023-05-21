@@ -95,6 +95,13 @@ const TodoApp = () => {
         >
           Clear All
         </Button>
+        <Button
+          sx={{ background: "#3b8ad0", "&:hover": { background: "#2768a2" } }}
+          size="small"
+          variant="contained"
+        >
+          Save
+        </Button>
         <ul className={styles.todo_list}>
           {visible === "completed"
             ? items
