@@ -28,20 +28,35 @@ const TodoApp = () => {
 
   React.useEffect(() => {
     const data = localStorage.getItem("reduxState");
+    console.log(data);
 
     let todos;
     let user;
 
     if (data) {
-      todos = JSON.parse(data).todos;
-      dispatch(setFromLocalS(todos));
-
-      user = JSON.parse(data).curUser[0];
-      if (user) {
-        dispatch(setUserFromLocalS(user));
-        dispatch(setFromLocalS(user.todos));
-      }
+      // todos = JSON.parse(data).todos;
+      // user = JSON.parse(data).curUser;
+      // console.log("Todos: " + todos);
+      // console.log("User: " + user[0]);
+      // if (user[0]) {
+      //   dispatch(setFromLocalS(user.todos));
+      //   dispatch(setUserFromLocalS(user));
+      // }
     }
+
+    // let todos;
+    // let user;
+
+    // if (data) {
+    //   todos = JSON.parse(data).todos;
+    //   dispatch(setFromLocalS(todos));
+
+    //   user = JSON.parse(data).curUser[0];
+    //   if (user) {
+    //     dispatch(setUserFromLocalS(user));
+    //     dispatch(setFromLocalS(user.todos));
+    //   }
+    // }
   }, []);
 
   const add = (): void => {
