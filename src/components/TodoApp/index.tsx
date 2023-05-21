@@ -28,35 +28,21 @@ const TodoApp = () => {
 
   React.useEffect(() => {
     const data = localStorage.getItem("reduxState");
-    console.log(data);
 
     let todos;
-    let user;
+    let curUser;
 
     if (data) {
-      // todos = JSON.parse(data).todos;
-      // user = JSON.parse(data).curUser;
-      // console.log("Todos: " + todos);
-      // console.log("User: " + user[0]);
-      // if (user[0]) {
-      //   dispatch(setFromLocalS(user.todos));
-      //   dispatch(setUserFromLocalS(user));
-      // }
+      todos = JSON.parse(data).todos;
+      curUser = JSON.parse(data).curUser[0];
+
+      if (curUser) {
+        dispatch(setFromLocalS(todos));
+        dispatch(setUserFromLocalS(curUser));
+      } else {
+        dispatch(setFromLocalS(todos));
+      }
     }
-
-    // let todos;
-    // let user;
-
-    // if (data) {
-    //   todos = JSON.parse(data).todos;
-    //   dispatch(setFromLocalS(todos));
-
-    //   user = JSON.parse(data).curUser[0];
-    //   if (user) {
-    //     dispatch(setUserFromLocalS(user));
-    //     dispatch(setFromLocalS(user.todos));
-    //   }
-    // }
   }, []);
 
   const add = (): void => {
@@ -84,11 +70,11 @@ const TodoApp = () => {
 
   const save = async () => {
     try {
-      const { data }: AxiosResponse<UserType[]> = await axios.put(
+      await axios.put(
         `https://63fef788571200b7b7d2e115.mockapi.io/Todos/${curUser.id}`,
         { todos: items }
       );
-      console.log(data);
+      alert('Saved on the server');
     } catch (e) {
       alert(e);
     }
@@ -128,14 +114,16 @@ const TodoApp = () => {
         >
           Clear All
         </Button>
-        <Button
-          onClick={save}
-          sx={{ background: "#3b8ad0", "&:hover": { background: "#2768a2" } }}
-          size="small"
-          variant="contained"
-        >
-          Save
-        </Button>
+        {curUser && (
+          <Button
+            onClick={save}
+            sx={{ background: "#3b8ad0", "&:hover": { background: "#2768a2" } }}
+            size="small"
+            variant="contained"
+          >
+            Save
+          </Button>
+        )}
         <ul className={styles.todo_list}>
           {visible === "completed"
             ? items
