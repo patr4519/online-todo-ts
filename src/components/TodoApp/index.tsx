@@ -7,10 +7,14 @@ import {
   selectTodos,
   setFromLocalS,
 } from "../../features/todos/todosSlice";
-import { ItemTodo } from "../../types/data";
+import { ItemTodo, UserType } from "../../types/data";
 import LiTodo from "../LiTodo";
 import { Button } from "@mui/material";
-import { setUserFromLocalS } from "../../features/todos/curUserSlice";
+import {
+  selectCurUser,
+  setUserFromLocalS,
+} from "../../features/todos/curUserSlice";
+import axios, { AxiosResponse } from "axios";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -20,6 +24,7 @@ const TodoApp = () => {
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
+  let curUser = useAppSelector(selectCurUser)[0];
 
   React.useEffect(() => {
     const data = localStorage.getItem("reduxState");
@@ -34,6 +39,7 @@ const TodoApp = () => {
       user = JSON.parse(data).curUser[0];
       if (user) {
         dispatch(setUserFromLocalS(user));
+        dispatch(setFromLocalS(user.todos));
       }
     }
   }, []);
@@ -58,6 +64,18 @@ const TodoApp = () => {
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === "Enter") {
       add();
+    }
+  };
+
+  const save = async () => {
+    try {
+      const { data }: AxiosResponse<UserType[]> = await axios.put(
+        `https://63fef788571200b7b7d2e115.mockapi.io/Todos/${curUser.id}`,
+        { todos: items }
+      );
+      console.log(data);
+    } catch (e) {
+      alert(e);
     }
   };
 
@@ -96,6 +114,7 @@ const TodoApp = () => {
           Clear All
         </Button>
         <Button
+          onClick={save}
           sx={{ background: "#3b8ad0", "&:hover": { background: "#2768a2" } }}
           size="small"
           variant="contained"

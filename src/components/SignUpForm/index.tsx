@@ -20,6 +20,7 @@ const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
           login: login.toLowerCase(),
           password: password,
           created: Date.now(),
+          todos: []
         });
         alert("User created!");
         setSignUpShow(false);
