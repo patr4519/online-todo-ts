@@ -15,6 +15,7 @@ import {
   setUserFromLocalS,
 } from "../../features/todos/curUserSlice";
 import axios, { AxiosResponse } from "axios";
+import { clearCurUser } from "../../features/todos/curUserSlice";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");

@@ -5,7 +5,7 @@ import Profile from "../Profile";
 import styles from "./Header.module.scss";
 import { Button } from "@mui/material";
 import { clearItems } from "../../features/todos/todosSlice";
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useAppDispatch();
