@@ -25,7 +25,7 @@ const TodoApp = () => {
   const [saving, setSaving] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const notify = () => toast('Saved!');
+  const notify = () => toast.success('Saved!');
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
@@ -90,7 +90,7 @@ const TodoApp = () => {
 
   return (
     <div className={styles.todo_app_wrapper}>
-      <ToastContainer />
+      <ToastContainer autoClose={2000}/>
       <div className={styles.todo_app}>
         <h1>Todos</h1>
         <div className={styles.input_section}>
