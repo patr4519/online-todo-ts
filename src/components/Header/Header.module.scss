@@ -21,3 +21,19 @@
 .header div:last-child {
   margin-right: 0;
 }
+
+.curUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    margin-right: 5px;
+  }
+
+  .exitButton {
+  cursor: pointer;
+}
+}
+
+

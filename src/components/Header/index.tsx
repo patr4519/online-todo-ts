@@ -3,9 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { clearCurUser, selectCurUser } from "../../features/todos/curUserSlice";
 import Profile from "../Profile";
 import styles from "./Header.module.scss";
-import { Button } from "@mui/material";
 import { clearItems } from "../../features/todos/todosSlice";
-import { Link } from "react-router-dom";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +14,19 @@ const Header = () => {
     localStorage.clear();
     dispatch(clearItems());
     dispatch(clearCurUser());
-  }
+  };
 
   return (
     <header className={styles.header}>
       <div>TodoApp</div>
-      {curUser ? <Button onClick={exit}>Exit</Button> : <Profile />}
+      {curUser ? (
+        <div className={styles.curUser}>
+          <span>{curUser.login}</span>
+          <ExitToAppIcon className={styles.exitButton} onClick={exit} />
+        </div>
+      ) : (
+        <Profile />
+      )}
       <div>Settings</div>
     </header>
   );
