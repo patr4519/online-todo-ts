@@ -15,6 +15,8 @@ import {
   setUserFromLocalS,
 } from "../../features/todos/curUserSlice";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -22,6 +24,8 @@ const TodoApp = () => {
   const [visible, setVisible] = React.useState("all");
   const [saving, setSaving] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const notify = () => toast('Saved!');
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
@@ -76,6 +80,7 @@ const TodoApp = () => {
         `https://63fef788571200b7b7d2e115.mockapi.io/Todos/${curUser.id}`,
         { todos: items }
       );
+      notify();
     } catch (e) {
       alert(e);
     } finally {
@@ -85,6 +90,7 @@ const TodoApp = () => {
 
   return (
     <div className={styles.todo_app_wrapper}>
+      <ToastContainer />
       <div className={styles.todo_app}>
         <h1>Todos</h1>
         <div className={styles.input_section}>
