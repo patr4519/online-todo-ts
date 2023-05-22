@@ -7,20 +7,20 @@ import {
   selectTodos,
   setFromLocalS,
 } from "../../features/todos/todosSlice";
-import { ItemTodo, UserType } from "../../types/data";
+import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
 import { Button } from "@mui/material";
 import {
   selectCurUser,
   setUserFromLocalS,
 } from "../../features/todos/curUserSlice";
-import axios, { AxiosResponse } from "axios";
-import { clearCurUser } from "../../features/todos/curUserSlice";
+import axios from "axios";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [visible, setVisible] = React.useState("all");
+  const [saving, setSaving] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
@@ -71,13 +71,15 @@ const TodoApp = () => {
 
   const save = async () => {
     try {
+      setSaving(true);
       await axios.put(
         `https://63fef788571200b7b7d2e115.mockapi.io/Todos/${curUser.id}`,
         { todos: items }
       );
-      alert('Saved on the server');
     } catch (e) {
       alert(e);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -121,6 +123,7 @@ const TodoApp = () => {
             sx={{ background: "#3b8ad0", "&:hover": { background: "#2768a2" } }}
             size="small"
             variant="contained"
+            disabled={saving}
           >
             Save
           </Button>
