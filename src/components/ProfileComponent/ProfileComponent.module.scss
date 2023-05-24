@@ -1,4 +1,4 @@
-.profileForm {
+.profile {
   .contactInfo {
     display: flex;
     flex-direction: column;
@@ -6,11 +6,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding: 5px;
     border: 1px solid black;
     width: 300px;
 
     .filed {
       margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       label {
         margin-bottom: 5px;

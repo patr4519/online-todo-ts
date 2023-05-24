@@ -5,6 +5,7 @@ import Profile from "../Profile";
 import styles from "./Header.module.scss";
 import { clearItems } from "../../features/todos/todosSlice";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,9 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div>TodoApp</div>
+      <Link to="/">
+        <div>TodoApp</div>
+      </Link>
       {curUser ? (
         <div className={styles.curUser}>
           <span>{curUser.login}</span>
@@ -27,7 +30,9 @@ const Header = () => {
       ) : (
         <Profile />
       )}
-      <div>Settings</div>
+      <Link to="/profile">
+        <div>Profile</div>
+      </Link>
     </header>
   );
 };
