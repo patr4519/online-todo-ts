@@ -1,7 +1,12 @@
-const Profile = () => {
-    return (
-        <div>Profile</div>
-    )
-}
+import styles from '../components/ProfileComponent/ProfileComponent.module.scss'
+import ProfileComponent from '../components/ProfileComponent';
 
-export default Profile;
+const Profile = () => {
+  return (
+    <div className={styles.profileForm}>
+        <ProfileComponent />
+    </div>
+  )
+};
+
+export default Profile

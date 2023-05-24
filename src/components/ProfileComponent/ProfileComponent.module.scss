@@ -1,0 +1,26 @@
+.profileForm {
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    width: 300px;
+
+    .filed {
+      margin-bottom: 10px;
+
+      label {
+        margin-bottom: 5px;
+      }
+
+      input {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    }
+  }
+}
