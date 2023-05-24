@@ -18,5 +18,5 @@ export type UserType = {
   login: string;
   password: string;
   created: string;
-  todos?: ItemTodo[];
+  todos: ItemTodo[] | [];
 }

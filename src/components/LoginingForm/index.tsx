@@ -29,8 +29,8 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
           user = data[i];
           if (user) {
             dispatch(clearItems());
-            
-            dispatch(setFromLocalS(user.todos))
+
+            dispatch(setFromLocalS(user.todos));
             dispatch(addCurUser(user));
           }
           setSignInShow(false);
@@ -39,8 +39,8 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
       }
       if (!user) {
         alert("Not such user or wrong password!");
-        setLogin('');
-        setPassword('');
+        setLogin("");
+        setPassword("");
       }
     } catch (error) {
       alert(error);

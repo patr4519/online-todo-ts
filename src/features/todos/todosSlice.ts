@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ItemTodo } from "../../types/data";
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: ItemTodo[] = [];
 
@@ -19,17 +20,17 @@ export const todosSlice = createSlice({
     clearItems() {
       return initialState;
     },
-    removeItem(state, action) {
+    removeItem(state, action: PayloadAction<number>) {
       const { payload } = action;
       return state.filter((item) => item.id !== payload);
     },
-    changeComplete(state, action) {
+    changeComplete(state, action: PayloadAction<number>) {
       const id = action.payload;
       return state.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       );
     },
-    setFromLocalS(state, action) {
+    setFromLocalS(state, action: PayloadAction<ItemTodo[]>) {
       state.push(...action.payload);
     }
   },
