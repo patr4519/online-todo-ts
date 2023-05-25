@@ -9,7 +9,7 @@ const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  const submitSignUp: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const submitSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const { data }: AxiosResponse<UserType[]> = await axios.get(

@@ -10,7 +10,7 @@ const ProfileComponent = () => {
   const [password, setPassword] = React.useState("");
   const [created, setCreated] = React.useState("");
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 

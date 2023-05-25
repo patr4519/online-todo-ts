@@ -13,7 +13,7 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
 
   const dispatch = useAppDispatch();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const { data }: AxiosResponse<UserType[] | []> = await axios.get(
