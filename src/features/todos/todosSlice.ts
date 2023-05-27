@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ItemTodo } from "../../types/data";
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { getTodosFromLS } from "../../functions/getTodosFromLS";
 
-const initialState: ItemTodo[] = [];
+const initialState: ItemTodo[] = getTodosFromLS();
 
 export const todosSlice = createSlice({
   name: "todos",

@@ -5,18 +5,14 @@ import {
   addItem,
   clearItems,
   selectTodos,
-  setFromLocalS,
 } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 import LiTodo from "../LiTodo";
 import { Button } from "@mui/material";
-import {
-  selectCurUser,
-  setUserFromLocalS,
-} from "../../features/todos/curUserSlice";
+import { selectCurUser } from "../../features/todos/curUserSlice";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TodoApp = () => {
   const [inputValue, setInputValue] = React.useState("");
@@ -25,30 +21,11 @@ const TodoApp = () => {
   const [saving, setSaving] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const notify = () => toast.success('Saved!');
+  const notify = () => toast.success("Saved!");
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
   let curUser = useAppSelector(selectCurUser)[0];
-
-  React.useEffect(() => {
-    const data = localStorage.getItem("reduxState");
-
-    let todos;
-    let curUser;
-
-    if (data) {
-      todos = JSON.parse(data).todos;
-      curUser = JSON.parse(data).curUser[0];
-
-      if (curUser) {
-        dispatch(setFromLocalS(todos));
-        dispatch(setUserFromLocalS(curUser));
-      } else {
-        dispatch(setFromLocalS(todos));
-      }
-    }
-  }, []);
 
   const add = (): void => {
     if (inputValue) {
@@ -90,7 +67,7 @@ const TodoApp = () => {
 
   return (
     <div className={styles.todo_app_wrapper}>
-      <ToastContainer autoClose={2000}/>
+      <ToastContainer autoClose={2000} />
       <div className={styles.todo_app}>
         <h1>Todos</h1>
         <div className={styles.input_section}>
