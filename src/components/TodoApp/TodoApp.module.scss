@@ -1,14 +1,18 @@
 .todo_app_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .todo_app {
     width: 400px;
     background: linear-gradient(180deg, #202020 0%, #809a9f 100%);
     padding: 10px;
     border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 10px;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
     box-shadow: 8px 6px 10px #515151;
 
     h1 {
