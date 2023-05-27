@@ -17,7 +17,6 @@ const ProfileComponent = () => {
   };
 
   const curUser = useAppSelector(selectCurUser)[0];
-  console.log(curUser);
 
   React.useEffect(() => {
     if (curUser) {
