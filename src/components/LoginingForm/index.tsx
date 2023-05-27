@@ -5,7 +5,7 @@ import { LoginingFormProps, UserType } from "../../types/data";
 import axios, { AxiosResponse } from "axios";
 import { useAppDispatch } from "../../app/hooks";
 import { addCurUser } from "../../features/todos/curUserSlice";
-import { clearItems, setFromLocalS } from "../../features/todos/todosSlice";
+import { clearItems, setTodosFromServer } from "../../features/todos/todosSlice";
 
 const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
   const [login, setLogin] = React.useState("");
@@ -27,10 +27,10 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
           data[i].password === password
         ) {
           user = data[i];
+          
           if (user) {
             dispatch(clearItems());
-
-            dispatch(setFromLocalS(user.todos));
+            dispatch(setTodosFromServer(user.todos));
             dispatch(addCurUser(user));
           }
           setSignInShow(false);

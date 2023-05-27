@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { ItemTodo } from "../../types/data";
-import type { PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { getTodosFromLS } from "../../functions/getTodosFromLS";
 
 const initialState: ItemTodo[] = getTodosFromLS();
@@ -31,14 +31,19 @@ export const todosSlice = createSlice({
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       );
     },
-    setFromLocalS(state, action: PayloadAction<ItemTodo[]>) {
+    setTodosFromServer(state, action: PayloadAction<ItemTodo[]>) {
       state.push(...action.payload);
-    }
+    },
   },
 });
 
-export const { addItem, clearItems, removeItem, changeComplete, setFromLocalS } =
-  todosSlice.actions;
+export const {
+  addItem,
+  clearItems,
+  removeItem,
+  changeComplete,
+  setTodosFromServer,
+} = todosSlice.actions;
 
 export const selectTodos = (state: RootState) => state.todos;
 
