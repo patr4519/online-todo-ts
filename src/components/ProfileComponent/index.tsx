@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { selectCurUser } from "../../features/todos/curUserSlice";
 import formatTimestamp from "../../functions/formatTimestamp";
 import styles from "./ProfileComponent.module.scss";
 import React from "react";
+import { Button } from "@mui/material";
 
 const ProfileComponent = () => {
   const [id, setId] = React.useState("");
@@ -15,6 +17,7 @@ const ProfileComponent = () => {
   };
 
   const curUser = useAppSelector(selectCurUser)[0];
+  console.log(curUser);
 
   React.useEffect(() => {
     if (curUser) {
@@ -24,6 +27,20 @@ const ProfileComponent = () => {
       setCreated(formatTimestamp(curUser.created));
     }
   }, []);
+
+  if (!curUser) {
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.emptyProfileBlock}>
+          <h2>Sign In</h2>
+          <div>To save your todos in your account</div>
+          <Link to="/">
+            <Button variant="contained">back</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.profile} onSubmit={handleSubmit}>

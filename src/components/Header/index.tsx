@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { clearCurUser, selectCurUser } from "../../features/todos/curUserSlice";
 import Profile from "../Profile";
