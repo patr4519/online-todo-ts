@@ -17,7 +17,7 @@ const curUserSlice = createSlice({
       state.push(action.payload);
     },
     clearCurUser: () => {
-      return initialState;
+      return [];
     },
   },
 });

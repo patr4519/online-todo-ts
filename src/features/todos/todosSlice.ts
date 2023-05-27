@@ -19,7 +19,7 @@ export const todosSlice = createSlice({
       });
     },
     clearItems() {
-      return initialState;
+      return [];
     },
     removeItem(state, action: PayloadAction<number>) {
       const { payload } = action;
