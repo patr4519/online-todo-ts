@@ -4,6 +4,7 @@ import { changeComplete, removeItem } from "../../features/todos/todosSlice";
 import { ItemTodo } from "../../types/data";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 
 const LiTodo = (props: ItemTodo) => {
   const dispath = useAppDispatch();
@@ -29,11 +30,12 @@ const LiTodo = (props: ItemTodo) => {
             Desc
           </Button>
         )}
-        <DeleteIcon
-          className={styles.deleteIcon}
-          onClick={() => dispath(removeItem(props.id))}
-          sx={{ color: "#e32315" }}
-        />
+        <IconButton sx={{width: '35px'}} onClick={() => dispath(removeItem(props.id))}>
+          <DeleteIcon
+            className={styles.deleteIcon}
+            sx={{ color: "#e32315" }}
+          />
+        </IconButton>
       </div>
     </li>
   );
