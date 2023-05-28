@@ -13,7 +13,11 @@ const LiTodo = (props: ItemTodo) => {
   return (
     <li>
       <div className={styles.leftBlock}>
-        <Checkbox onClick={() => dispath(changeComplete(props.id))} checked={props.completed} />
+        <Checkbox
+          onClick={() => dispath(changeComplete(props.id))}
+          checked={props.completed}
+          sx={{ color: "#a88a31", "&.Mui-checked": { color: "#a88a31" } }}
+        />
         <label>{props.text}</label>
       </div>
       <div className={styles.rightBlock}>
@@ -22,7 +26,7 @@ const LiTodo = (props: ItemTodo) => {
             onClick={() => alert(props.description)}
             size="small"
             variant="contained"
-            color="success"
+            sx={{ background: "#27847b" }}
           >
             Desc
           </Button>
