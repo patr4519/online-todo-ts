@@ -21,7 +21,7 @@ const TodoApp = () => {
   const [saving, setSaving] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const notify = () => toast.success("Saved!");
+  const notify = () => toast.success("Saved in your profile!");
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
