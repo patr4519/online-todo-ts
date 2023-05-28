@@ -5,6 +5,7 @@ import { ItemTodo } from "../../types/data";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import { Checkbox } from "@mui/material";
 
 const LiTodo = (props: ItemTodo) => {
   const dispath = useAppDispatch();
@@ -12,11 +13,7 @@ const LiTodo = (props: ItemTodo) => {
   return (
     <li>
       <div className={styles.leftBlock}>
-        <input
-          onClick={() => dispath(changeComplete(props.id))}
-          defaultChecked={props.completed}
-          type="checkbox"
-        />
+        <Checkbox onClick={() => dispath(changeComplete(props.id))} checked={props.completed} />
         <label>{props.text}</label>
       </div>
       <div className={styles.rightBlock}>
@@ -30,11 +27,11 @@ const LiTodo = (props: ItemTodo) => {
             Desc
           </Button>
         )}
-        <IconButton sx={{width: '35px'}} onClick={() => dispath(removeItem(props.id))}>
-          <DeleteIcon
-            className={styles.deleteIcon}
-            sx={{ color: "#e32315" }}
-          />
+        <IconButton
+          sx={{ width: "35px" }}
+          onClick={() => dispath(removeItem(props.id))}
+        >
+          <DeleteIcon className={styles.deleteIcon} sx={{ color: "#e32315" }} />
         </IconButton>
       </div>
     </li>
