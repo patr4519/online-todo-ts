@@ -5,12 +5,16 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { getTodosFromLS } from "../../functions/getTodosFromLS";
 
 const initialState: ItemTodo[] = getTodosFromLS();
+interface AddItemPayTypes {
+  inputValue: string,
+  description: string
+}
 
 export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addItem(state, action) {
+    addItem(state, action: PayloadAction<AddItemPayTypes>) {
       state.push({
         id: Date.now(),
         text: action.payload.inputValue,
