@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 const ProfileComponent = () => {
   const [id, setId] = React.useState("");
   const [login, setLogin] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  // const [password, setPassword] = React.useState("********");
   const [created, setCreated] = React.useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLDivElement>) => {
@@ -22,7 +22,7 @@ const ProfileComponent = () => {
     if (curUser) {
       setId(curUser.id);
       setLogin(curUser.login);
-      setPassword(curUser.password);
+      // setPassword(curUser.password);
       setCreated(formatTimestamp(curUser.created));
     }
   }, []);
@@ -61,7 +61,8 @@ const ProfileComponent = () => {
         <div className={styles.filed}>
           <label htmlFor="password">Password:</label>
           <input
-            defaultValue={password}
+            readOnly
+            defaultValue={'********'}
             type="password"
             id="password"
             name="password"

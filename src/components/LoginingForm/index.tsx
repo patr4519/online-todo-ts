@@ -5,11 +5,19 @@ import { LoginingFormProps, UserType } from "../../types/data";
 import axios, { AxiosResponse } from "axios";
 import { useAppDispatch } from "../../app/hooks";
 import { addCurUser } from "../../features/todos/curUserSlice";
-import { clearItems, setTodosFromServer } from "../../features/todos/todosSlice";
+import {
+  clearItems,
+  setTodosFromServer,
+} from "../../features/todos/todosSlice";
+import { SHA256 } from "crypto-js";
 
 const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  function sha256(str: string) {
+    return SHA256(str).toString();
+  }
 
   const dispatch = useAppDispatch();
 
@@ -24,10 +32,10 @@ const LoginingForm = ({ setSignInShow }: LoginingFormProps) => {
       for (let i = 0; i < data.length; i++) {
         if (
           data[i].login === login.toLocaleLowerCase() &&
-          data[i].password === password
+          data[i].password === sha256(password)
         ) {
           user = data[i];
-          
+
           if (user) {
             dispatch(clearItems());
             dispatch(setTodosFromServer(user.todos));

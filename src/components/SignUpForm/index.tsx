@@ -4,10 +4,15 @@ import Button from "@mui/material/Button";
 import { SingUpProps } from "../../types/data";
 import axios, { AxiosResponse } from "axios";
 import { UserType } from "../../types/data";
+import { SHA256 } from 'crypto-js';
 
 const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
   const [login, setLogin] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  function sha256(str: string) {
+    return SHA256(str).toString();
+  }
 
   const submitSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,7 +23,7 @@ const SignUpForm = ({ setSignUpShow }: SingUpProps) => {
       if (!data.some((user) => user.login === login)) {
         await axios.post("https://63fef788571200b7b7d2e115.mockapi.io/Todos", {
           login: login.toLowerCase(),
-          password: password,
+          password: sha256(password),
           created: Date.now(),
           todos: []
         });
