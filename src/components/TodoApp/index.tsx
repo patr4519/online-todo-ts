@@ -25,7 +25,7 @@ const TodoApp = () => {
 
   const dispatch = useAppDispatch();
   let items = useAppSelector(selectTodos);
-  let curUser = useAppSelector(selectCurUser)[0];
+  let curUser = useAppSelector(selectCurUser);
 
   const add = (): void => {
     if (inputValue) {

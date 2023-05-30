@@ -21,6 +21,6 @@ const curUserSlice = createSlice({
 
 export const { addCurUser, clearCurUser } = curUserSlice.actions;
 
-export const selectCurUser = (state: RootState) => state.curUser;
+export const selectCurUser = (state: RootState) => state.curUser[0];
 
 export default curUserSlice.reducer;

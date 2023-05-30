@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const curUser = useAppSelector(selectCurUser)[0];
+  const curUser = useAppSelector(selectCurUser);
 
   const exit = (): void => {
     localStorage.clear();

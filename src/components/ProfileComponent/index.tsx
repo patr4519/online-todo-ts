@@ -16,7 +16,7 @@ const ProfileComponent = () => {
     event.preventDefault();
   };
 
-  const curUser = useAppSelector(selectCurUser)[0];
+  const curUser = useAppSelector(selectCurUser);
 
   React.useEffect(() => {
     if (curUser) {
